@@ -13,4 +13,5 @@ export default defineConfig({
       }
     }
   },
+  base: '/kovrr-sr-fullstack/book-app',
 })
