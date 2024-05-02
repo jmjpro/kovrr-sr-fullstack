@@ -13,5 +13,5 @@ export default defineConfig({
       }
     }
   },
-  base: 'https://jmjpro.github.io/kovrr-sr-fullstack/',
+  base: '/kovrr-sr-fullstack/',
 })
