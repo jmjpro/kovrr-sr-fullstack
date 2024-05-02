@@ -4,9 +4,7 @@ async function getVolumes(pageSize: number, page?: number): Promise<{
   volumes: Volume[],
   totalVolumes: number,
 }> {
-  // TODO: load this from an configuration-provided variable
-  const apiUrl = /* process.env.NODE_ENV === 'production' ? 'https://books.google.com/books\?jscmd\=ClBrowse\&hl\=en\&as_coll\=1001\&start\=0\&num\=100\&uid\=100550515361463032088' :*/ '/api'
-  const res = await fetch(apiUrl)
+  const res = await fetch('/api')
   const books = await res.json()
   
   const volumes: Volume[] = books.volumes.map((it: any) => {
@@ -18,9 +16,10 @@ async function getVolumes(pageSize: number, page?: number): Promise<{
     return volume
   });
 
+  // this is a programmatic way to create test data
+  // if we have less than 50 volumes in our catalog, we duplicate them until we get above 50 results
   let i = 0
   while (volumes.length < 50) {
-    // console.log(volumes)
     volumes.push(...volumes.map(it => ({...it, bibKey: it.bibKey + i})))
     i++
   }
