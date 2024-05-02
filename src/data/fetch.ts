@@ -4,7 +4,9 @@ async function getVolumes(pageSize: number, page?: number): Promise<{
   volumes: Volume[],
   totalVolumes: number,
 }> {
-  const res = await fetch('/api')
+  // TODO: load this from an configuration-provided variable
+  const apiUrl = /* process.env.NODE_ENV === 'production' ? 'https://books.google.com/books\?jscmd\=ClBrowse\&hl\=en\&as_coll\=1001\&start\=0\&num\=100\&uid\=100550515361463032088' :*/ '/api'
+  const res = await fetch(apiUrl)
   const books = await res.json()
   
   const volumes: Volume[] = books.volumes.map((it: any) => {
