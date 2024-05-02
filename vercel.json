@@ -16,11 +16,11 @@
       ]
     }
   ],
-  "redirects": [
+  "rewrites": [
     {
       "source": "/api",
       "destination": "https://books.google.com/books?jscmd=ClBrowse&hl=en&as_coll=1001&start=0&num=100&uid=100550515361463032088",
-      "permanent": false
+      "permanent": true
     }
   ]
 }
