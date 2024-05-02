@@ -1,0 +1,13 @@
+.cart {
+  display: flex;
+  position: relative;
+  align-self: flex-end;
+
+  span {
+    position: absolute;
+    left: 25px;
+    top: 6px;
+    color: lightseagreen;
+    font-weight: bold;
+  }
+}
