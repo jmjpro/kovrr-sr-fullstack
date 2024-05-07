@@ -10,19 +10,24 @@ function App() {
   const [cartItems, setCartItems] = useState([] as Volume[])
 
   function changePageSize(size: number) {
-    setPageSize(size);
-    setPage(0);
+    setPageSize(size)
+    setPage(0)
   }
 
   return (
     <>
       <h1>Kovrr Book App</h1>
       <Cart cartItems={cartItems} setCartItems={setCartItems} />
-      <Volumes pageSize={pageSize} page={page} setPage={setPage} cartItems={cartItems} setCartItems={setCartItems} />
+      <Volumes
+        pageSize={pageSize}
+        page={page}
+        setPage={setPage}
+        cartItems={cartItems}
+        setCartItems={setCartItems}
+      />
 
       <label>
         How many books to show per page?
-
         <select onChange={(e) => changePageSize(Number(e.currentTarget.value))}>
           <option>10</option>
           <option>25</option>
