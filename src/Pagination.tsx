@@ -12,11 +12,6 @@ function Pagination({ numElements, pageSize, page, setPage }: PaginationProps) {
         // don't show any pagination if there's only one page of results
         return null
     }
-    // TODO: do this better
-    const pageArray = Array(numPages)
-    for (let i = 0; i < pageArray.length; i++) {
-        pageArray[i] = i
-    }
     
     return <ul className="pagination">
         { // only render a "Previous" button if we're not showing the first page of results
@@ -24,7 +19,7 @@ function Pagination({ numElements, pageSize, page, setPage }: PaginationProps) {
         }
 
         { // render buttons to allow navigation between pages; the current page is displayed as text instead of a button
-            pageArray.map((_it, i) => <li key={i} className="page">
+            [...Array(numPages)].map((_it, i) => <li key={i} className="page">
                 {page === i
                     ? <span>{i + 1}</span>
                     : <button className="link" onClick={() => setPage(i)}>{i + 1}</button>}

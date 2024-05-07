@@ -7,6 +7,11 @@ import type {Volume} from './types'
 import './Volumes.css'
 import iconShoppingCart from './assets/shopping-cart-icon.svg'
 
+const minThumbnailHeight = 150;
+const maxThumbnailHeight = 208;
+
+const randomIntFromInterval = (min: number, max: number) => Math.floor(Math.random() * (max - min + 1) + min);
+
 interface VolumesProps {
     pageSize: number
     page: number
@@ -18,7 +23,13 @@ function Volumes({ pageSize, page, setPage, cartItems, setCartItems }: VolumesPr
     const volumesQuery = useQuery({ queryKey: ['books', pageSize, page], queryFn: () => getVolumes(pageSize, page) })
 
     if (volumesQuery.isLoading) {
-        return <div className="loading">Loading volumes...</div>
+        return <ul className="volumes">
+            {[...Array(pageSize)].map((_it, i) => <li key={i} className="skeleton-wrapper">
+                <div className="skeleton skeleton-image" style={{ height: `${randomIntFromInterval(minThumbnailHeight, maxThumbnailHeight)}px`}}/>
+                <div className="title skeleton skeleton-text"/>
+                <button className="add-to-cart">Add to Cart <img src={iconShoppingCart} /></button>
+            </li>)}
+        </ul>
     }
 
     if (volumesQuery.isError) {

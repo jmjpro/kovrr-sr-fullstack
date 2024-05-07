@@ -24,6 +24,10 @@ ul.volumes {
       line-height: 1.2;
     }
   }
+
+  li.skeleton-wrapper {
+    height: 300px;
+  }
 }
 
 button.add-to-cart {
@@ -38,4 +42,32 @@ button.add-to-cart {
     height: 24px;
     width: 24px;
   }
+}
+
+.skeleton {
+  animation: skeleton-loading 1s linear infinite alternate;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: lightseagreen;
+  }
+  100% {
+    background-color: hsl(200, 20%, 95%);
+  }
+}
+
+.skeleton-image {
+  width: 128px;
+}
+
+.skeleton-text {
+  width: 90%;
+  height: 0.7rem;
+  margin-bottom: 0.5rem;
+  border-radius: 0.25rem;
+}
+
+.skeleton-text__body {
+  width: 75%;
 }
