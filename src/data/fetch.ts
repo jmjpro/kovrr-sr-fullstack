@@ -4,7 +4,7 @@ async function getVolumes(pageSize: number, page?: number): Promise<{
   volumes: Volume[],
   totalVolumes: number,
 }> {
-  const res = await fetch('/api')
+  const res = await fetch('/api') // see /vite.config.js and /vercel.json, respectively, for where this path is proxied to a Google Books API in dev and production 
   const books = await res.json()
   
   const volumes: Volume[] = books.volumes.map((it: any) => {
